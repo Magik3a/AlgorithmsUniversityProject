@@ -14,6 +14,8 @@ namespace AlgorithmsComputers
     {
         private int kValue;
         private int nValue;
+
+        private List<int> nElements;
         //This is the starting point of all the magic 
         public Form1()
         {
@@ -22,7 +24,7 @@ namespace AlgorithmsComputers
             lblErrorK.Hide();
             lblErrorN.Hide();
             lblErrorKBiggerThanN.Hide();
-            
+
         }
 
         /* You can auto create the method with 2 clicks on the button
@@ -33,16 +35,18 @@ namespace AlgorithmsComputers
          */
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-           if(!ValidateAndSetValues())
+            if (!ValidateAndSetValues())
                 return;
-           
-           //Here is our method to show some results
-           WriteCombination();
+
+            //Here is our method to show some results
+            WriteCombination();
 
         }
         // Here we check if the entered values are actually numbers and we set the global variables for this class scope
         private bool ValidateAndSetValues()
         {
+
+            nElements = new List<int>();
             // We validate that entered value is int
             if (!int.TryParse(txtCombinationClass.Text, out kValue))
             {
@@ -59,23 +63,30 @@ namespace AlgorithmsComputers
                 txtCombinationClass.ForeColor = Color.Black;
 
             }
-            // We validate that entered value is int
-            if (!int.TryParse(txtNValue.Text, out nValue))
+
+            var nElementsTemp = txtNValue.Text.Split(',');
+            foreach (var nElement in nElementsTemp)
             {
-                // If the value is not int we make the text box red
-                txtNValue.ForeColor = Color.Red;
-                // And we show the error label
-                lblErrorN.Show();
-                return false;
+                // We validate that entered value is int
+                if (!int.TryParse(nElement.Trim(), out var intValue))
+                {
+                    // If the value is not int we make the text box red
+                    txtNValue.ForeColor = Color.Red;
+                    // And we show the error label
+                    lblErrorN.Show();
+                    return false;
+                }
+                else
+                {
+                    // IF the value is int we hide the error and the text black again
+                    lblErrorN.Hide();
+                    txtNValue.ForeColor = Color.Black;
+                    nElements.Add(intValue);
+                }
             }
-            else
-            {
-                // IF the value is int we hide the error and the text black again
-                lblErrorN.Hide();
-                txtNValue.ForeColor = Color.Black;
-            }
+            nValue = nElements.Count;
             //If we reach here both of our values are numbers
-            if (kValue > nValue)
+            if (nElements.Count < kValue)
             {
                 lblErrorKBiggerThanN.Show();
                 return false;
@@ -92,7 +103,7 @@ namespace AlgorithmsComputers
             for (int i = 0; i < kValue; i++)
                 comb[i] = i + 1;
 
-            txtResult.AppendText($"N = {nValue}; K = {kValue}" + Environment.NewLine);
+            txtResult.AppendText($"N = {nElements.Count}; K = {kValue}" + Environment.NewLine);
 
             WriteArray(comb);
             while (NextComb(comb, nValue))

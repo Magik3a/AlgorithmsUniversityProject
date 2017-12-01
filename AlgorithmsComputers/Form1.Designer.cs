@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblErrorKBiggerThanN = new System.Windows.Forms.Label();
+            this.btnCleanResult = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtResult = new System.Windows.Forms.TextBox();
+            this.lblErrorN = new System.Windows.Forms.Label();
+            this.txtNValue = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblErrorK = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.txtCombinationClass = new System.Windows.Forms.TextBox();
             this.lblEnterNumber = new System.Windows.Forms.Label();
-            this.txtNValue = new System.Windows.Forms.TextBox();
-            this.lblErrorN = new System.Windows.Forms.Label();
-            this.txtResult = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnCleanResult = new System.Windows.Forms.Button();
-            this.lblErrorKBiggerThanN = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,15 +63,77 @@
             this.panel1.Size = new System.Drawing.Size(521, 617);
             this.panel1.TabIndex = 0;
             // 
+            // lblErrorKBiggerThanN
+            // 
+            this.lblErrorKBiggerThanN.AutoSize = true;
+            this.lblErrorKBiggerThanN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorKBiggerThanN.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorKBiggerThanN.Location = new System.Drawing.Point(49, 169);
+            this.lblErrorKBiggerThanN.Name = "lblErrorKBiggerThanN";
+            this.lblErrorKBiggerThanN.Size = new System.Drawing.Size(78, 17);
+            this.lblErrorKBiggerThanN.TabIndex = 11;
+            this.lblErrorKBiggerThanN.Text = "Опа, k > n ";
+            // 
+            // btnCleanResult
+            // 
+            this.btnCleanResult.Location = new System.Drawing.Point(390, 193);
+            this.btnCleanResult.Name = "btnCleanResult";
+            this.btnCleanResult.Size = new System.Drawing.Size(75, 23);
+            this.btnCleanResult.TabIndex = 10;
+            this.btnCleanResult.Text = "Изчисти";
+            this.btnCleanResult.UseVisualStyleBackColor = true;
+            this.btnCleanResult.Click += new System.EventHandler(this.btnCleanResult_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(49, 199);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 17);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Резултат";
+            // 
+            // txtResult
+            // 
+            this.txtResult.BackColor = System.Drawing.Color.Moccasin;
+            this.txtResult.CausesValidation = false;
+            this.txtResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResult.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.txtResult.Location = new System.Drawing.Point(49, 222);
+            this.txtResult.Multiline = true;
+            this.txtResult.Name = "txtResult";
+            this.txtResult.ReadOnly = true;
+            this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtResult.Size = new System.Drawing.Size(416, 344);
+            this.txtResult.TabIndex = 8;
+            // 
+            // lblErrorN
+            // 
+            this.lblErrorN.AutoSize = true;
+            this.lblErrorN.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorN.Location = new System.Drawing.Point(158, 149);
+            this.lblErrorN.Name = "lblErrorN";
+            this.lblErrorN.Size = new System.Drawing.Size(169, 13);
+            this.lblErrorN.TabIndex = 7;
+            this.lblErrorN.Text = "Въведената стойност е грешна!";
+            // 
+            // txtNValue
+            // 
+            this.txtNValue.Location = new System.Drawing.Point(52, 146);
+            this.txtNValue.Name = "txtNValue";
+            this.txtNValue.Size = new System.Drawing.Size(100, 20);
+            this.txtNValue.TabIndex = 6;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(49, 126);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 17);
+            this.label2.Size = new System.Drawing.Size(250, 17);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Въведи елементи - n";
+            this.label2.Text = "Въведи елементи - n, разделени с \',\'";
             // 
             // label1
             // 
@@ -120,68 +182,6 @@
             this.lblEnterNumber.Size = new System.Drawing.Size(230, 17);
             this.lblEnterNumber.TabIndex = 0;
             this.lblEnterNumber.Text = "Въведи клас на комбинацията - k";
-            // 
-            // txtNValue
-            // 
-            this.txtNValue.Location = new System.Drawing.Point(52, 146);
-            this.txtNValue.Name = "txtNValue";
-            this.txtNValue.Size = new System.Drawing.Size(100, 20);
-            this.txtNValue.TabIndex = 6;
-            // 
-            // lblErrorN
-            // 
-            this.lblErrorN.AutoSize = true;
-            this.lblErrorN.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorN.Location = new System.Drawing.Point(158, 149);
-            this.lblErrorN.Name = "lblErrorN";
-            this.lblErrorN.Size = new System.Drawing.Size(176, 13);
-            this.lblErrorN.TabIndex = 7;
-            this.lblErrorN.Text = "Въведената стойност не е число!";
-            // 
-            // txtResult
-            // 
-            this.txtResult.BackColor = System.Drawing.Color.Moccasin;
-            this.txtResult.CausesValidation = false;
-            this.txtResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResult.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.txtResult.Location = new System.Drawing.Point(49, 222);
-            this.txtResult.Multiline = true;
-            this.txtResult.Name = "txtResult";
-            this.txtResult.ReadOnly = true;
-            this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResult.Size = new System.Drawing.Size(416, 344);
-            this.txtResult.TabIndex = 8;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(49, 199);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 17);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Резултат";
-            // 
-            // btnCleanResult
-            // 
-            this.btnCleanResult.Location = new System.Drawing.Point(390, 193);
-            this.btnCleanResult.Name = "btnCleanResult";
-            this.btnCleanResult.Size = new System.Drawing.Size(75, 23);
-            this.btnCleanResult.TabIndex = 10;
-            this.btnCleanResult.Text = "Изчисти";
-            this.btnCleanResult.UseVisualStyleBackColor = true;
-            this.btnCleanResult.Click += new System.EventHandler(this.btnCleanResult_Click);
-            // 
-            // lblErrorKBiggerThanN
-            // 
-            this.lblErrorKBiggerThanN.AutoSize = true;
-            this.lblErrorKBiggerThanN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorKBiggerThanN.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorKBiggerThanN.Location = new System.Drawing.Point(49, 169);
-            this.lblErrorKBiggerThanN.Name = "lblErrorKBiggerThanN";
-            this.lblErrorKBiggerThanN.Size = new System.Drawing.Size(78, 17);
-            this.lblErrorKBiggerThanN.TabIndex = 11;
-            this.lblErrorKBiggerThanN.Text = "Опа, k > n ";
             // 
             // Form1
             // 
