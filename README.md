@@ -1,3 +1,3 @@
 # AlgorithmsUniversityProject
 
-<img src="https://cdn.pbrd.co/images/GVlcaFG.png" alt="image" border="0">
+<img src="https://image.ibb.co/j9KWPw/7BFVXuX.png" alt="image" border="0">
