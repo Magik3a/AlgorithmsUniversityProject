@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace AlgorithmsComputers
 {
     public partial class Form1 : Form
@@ -97,55 +96,40 @@ namespace AlgorithmsComputers
             return true;
         }
 
+        static IEnumerable<IEnumerable<T>>  GetCombination<T>(IEnumerable<T> list, int length)
+        {
+            if (length == 1) return list.Select(t => new T[] { t });
+            return GetCombination(list, length - 1)
+                .SelectMany(t => list.Where(o => !t.Contains(o)),
+                    (t1, t2) => t1.Concat(new T[] { t2 }));
+        }
+
         private void WriteCombination()
         {
             int[] comb = new int[kValue];
             for (int i = 0; i < kValue; i++)
-                comb[i] = i + 1;
+                comb[i] = nElements[i];
 
             txtResult.AppendText($"N = {nElements.Count}; K = {kValue}" + Environment.NewLine);
-
-            WriteArray(comb);
-            while (NextComb(comb, nValue))
+            
+            var result = GetCombination(nElements.ToList(), kValue);
+            foreach (var item in result)
             {
-                WriteArray(comb);
+                foreach (int v in item)
+                    txtResult.AppendText(v.ToString() + ' ');
+                txtResult.AppendText(Environment.NewLine);
             }
             txtResult.AppendText("***********************");
             txtResult.AppendText(Environment.NewLine);
         }
-
-        private void WriteArray(int[] ar)
-        {
-            foreach (int v in ar)
-                txtResult.AppendText(v.ToString() + ' ');
-            txtResult.AppendText(Environment.NewLine);
-        }
-
-        private bool NextComb(int[] cm, int n)
-        {
-            int i = cm.Length - 1;
-
-            while (i >= 0)
-            {
-                if (cm[i] < n - cm.Length + i + 1)
-                {
-                    cm[i]++;
-                    for (i++; i < cm.Length; i++)
-                    {
-                        cm[i] = cm[i - 1] + 1;
-                    }
-                    return true;
-                }
-                i--;
-            }
-            return false;
-        }
-
-
+        
         //This is called after the user clicks clean and just sets the text value to none
         private void btnCleanResult_Click(object sender, EventArgs e)
         {
             txtResult.Text = null;
         }
+     
     }
+
+
 }
