@@ -96,12 +96,21 @@ namespace AlgorithmsComputers
             return true;
         }
 
-        static IEnumerable<IEnumerable<T>>  GetCombination<T>(IEnumerable<T> list, int length)
+        static IEnumerable<IEnumerable<T>>  GetCombination<T>(IEnumerable<T> items, int count)
         {
-            if (length == 1) return list.Select(t => new T[] { t });
-            return GetCombination(list, length - 1)
-                .SelectMany(t => list.Where(o => !t.Contains(o)),
-                    (t1, t2) => t1.Concat(new T[] { t2 }));
+            int i = 0;
+            foreach (var item in items)
+            {
+                if (count == 1)
+                    yield return new T[] { item };
+                else
+                {
+                    foreach (var result in GetCombination(items.Skip(i + 1), count - 1))
+                        yield return new T[] { item }.Concat(result);
+                }
+
+                ++i;
+            }
         }
 
         private void WriteCombination()
@@ -111,7 +120,8 @@ namespace AlgorithmsComputers
                 comb[i] = nElements[i];
 
             txtResult.AppendText($"N = {nElements.Count}; K = {kValue}" + Environment.NewLine);
-            
+
+            //Get All permutations  and distinct them 
             var result = GetCombination(nElements.ToList(), kValue);
             foreach (var item in result)
             {
